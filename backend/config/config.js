@@ -4,7 +4,7 @@ module.exports = {
   "development": {
     "username": "postgres",
     "password": "THEOmonkey123",
-    "database": process.env.DB_DATABASE,
+    "database": "rest_rant_auth",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },

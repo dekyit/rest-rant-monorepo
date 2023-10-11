@@ -37,8 +37,6 @@ function LoginForm() {
 
         console.log(data)
     }
-  
-
 
     return (
         <main>

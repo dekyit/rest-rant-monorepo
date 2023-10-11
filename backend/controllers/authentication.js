@@ -4,8 +4,6 @@ const bcrypt = require('bcrypt')
 
 const { User } = db
 
-  
-  
 router.post('/', async (req, res) => {
     
     let user = await User.findOne({

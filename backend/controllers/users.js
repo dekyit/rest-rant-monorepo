@@ -5,11 +5,10 @@ const bcrypt = require('bcrypt')
 const { User } = db
 
 router.post('/', async (req, res) => {
-    let {passwordDigest, ...nonPasswordField} = req.body;
+    let {password, ...nonPasswordField} = req.body;
     const user = await User.create({
-        ...nonPasswordFields
-    ,
-    passwordDigest: await bcrypt.hash(passwordDigest, 12)
+        ...nonPasswordField,
+    passwordDigest: await bcrypt.hash(password, 12)
 })
     
     res.json(user)

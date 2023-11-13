@@ -1,10 +1,11 @@
 // Modules and Globals
-require('dotenv').config()
-const express = require('express')
-const bodyParser = require('body-parser')
-const cors = require('cors')
+require('dotenv').config();
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
 const app = express();
-const cookieSession = require('cookie-session')
+const cookieSession = require('cookie-session');
+const path = require('path');
 
 // Express Settings
 app.use(cors())
@@ -17,10 +18,13 @@ app.use(cookieSession({
     maxAge: 24 * 60 * 60 * 1000
 }))
 
+// serve static front end in production mode
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, 'client', 'build')));
+}
 // Controllers & Routes
 
 app.use(express.urlencoded({ extended: true }))
-
 app.use('/places', require('./controllers/places'))
 app.use('/users', require('./controllers/users'))
 app.use('/auth', require('./controllers/authentication'))
